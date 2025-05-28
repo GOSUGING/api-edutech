@@ -28,7 +28,6 @@ public class CursoService {
 
    // @Autowired
     //private EstadoCursoService estadoCursoService; // Inyectar el servicio de EstadoCurso si es necesario
-    // Puedes agregar más servicios según sea necesario
 
 
     // Buscar todos los cursos
@@ -42,18 +41,11 @@ public class CursoService {
         return cursoRepository.findById(id);
     }
 
-    //Cursos activos
-   // public List<Curso> buscarCursosActivosHoy() {
-    //    Date hoy = new Date();
-    //    return cursoRepository.findByFechaInicioBeforeAndFechaFinAfter(hoy, hoy);
-    //}
-    //Contar cursos por profesor
-    //public Integer contarCursosPorProfesor(Integer profesorId) {
-    //    return cursoRepository.countByProfesorId(profesorId);
-    //}
-    
+
     //Contar cursos por estado
-    public int contarCursosPorEstado(StatusCursoEnum status) {
-        return cursoRepository.countByEstadoCursoStatus(status);
+    public Integer contarCursosPorEstado(StatusCursoEnum status, StatusCursoEnum statusCursoEnum) {
+        EstadoCurso estadoCurso = new EstadoCurso();
+        estadoCurso.setStatus(status);
+        return cursoRepository.countByEstadoCurso(estadoCurso);
     }
 }
