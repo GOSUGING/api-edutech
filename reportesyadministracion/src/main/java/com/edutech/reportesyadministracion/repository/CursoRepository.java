@@ -12,7 +12,5 @@ import com.edutech.reportesyadministracion.model.*;
 @Repository
 
 public interface CursoRepository extends JpaRepository<Curso, Integer> {
-    //Integer countByProfesorId(Integer profesorId);
-
-    //List<Curso> findByFechaInicioBeforeAndFechaFinAfter(Date inicio, Date fin);
-    Integer countByEstadoCurso(EstadoCurso estadoCurso);}
+    Integer countByEstadoCurso(EstadoCurso estadoCurso);
+}

@@ -91,7 +91,20 @@ public ResponseEntity<Integer> contarCursosPorEstado(@PathVariable Integer id) {
     if (estadoCurso == null) {
         return ResponseEntity.notFound().build();
     }
-    Integer cantidad = cursoService.contarCursosPorEstado(estadoCurso);
+    Integer cantidad = cursoService.contarCursosPorEstado(null, estadoCurso.getStatus());
+    if (cantidad == null) {
+        return ResponseEntity.noContent().build();
+    }
+    // Si el estadoCurso es null, no se encontró el estado
+    // Si la cantidad es null, no hay cursos con ese estado
+    if (cantidad < 0) {
+        return ResponseEntity.badRequest().body(0); // Retorna 0 si no hay cursos
+    }
+    // Si la cantidad es 0, no hay cursos con ese estado
+    if (cantidad == 0) {
+        return ResponseEntity.ok(0); // Retorna 0 si no hay cursos
+    }
+    // Si la cantidad es mayor a 0, retorna la cantidad de cursos
     return ResponseEntity.ok(cantidad);
 }
 

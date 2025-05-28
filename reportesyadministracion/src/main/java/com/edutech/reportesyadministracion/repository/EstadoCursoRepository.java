@@ -16,4 +16,5 @@ public interface EstadoCursoRepository extends JpaRepository<EstadoCurso, Intege
 
 
 
+
 }

@@ -28,8 +28,8 @@ public class EstadoCurso {
     @Column(nullable = false, unique = true)
     private StatusCursoEnum status;
 
-    @OneToMany(mappedBy = "estadoCurso", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonIgnore 
+    @OneToMany(mappedBy = "estadoCurso", fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<Curso> cursos;
 
     @ManyToOne
@@ -38,6 +38,7 @@ public class EstadoCurso {
 
     @ManyToOne
     @JoinColumn(name = "curso_id")
+    @JsonIgnore
     private Curso curso;
 
 }
