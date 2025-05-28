@@ -15,14 +15,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import evaluacionycertificado.model.Evaluacion;
-import evaluacionycertificado.services.EvaluacionServices;
+import evaluacionycertificado.service.EvaluacionService;
 
 @RestController
 @RequestMapping("api/v1/evaluacion")
 
 public class EvaluacionController {
     @Autowired
-    private EvaluacionServices evaluacionservices;
+    private EvaluacionService evaluacionservices;
 
     @GetMapping("/listaEvaluacion")
     public ResponseEntity<List<Evaluacion>> listar(){
@@ -32,7 +32,7 @@ public class EvaluacionController {
             
         }
         return ResponseEntity.ok(eva);
-    }
+    }   
 
     @GetMapping("/{id}")
     public ResponseEntity<Evaluacion> buscarId(@PathVariable Long id){
@@ -57,7 +57,7 @@ public class EvaluacionController {
             eva.setTitulo(evaluacion.getTitulo());
             eva.setFecha(evaluacion.getFecha());
             eva.setPonderacion(evaluacion.getPonderacion());
-            eva.setIdCurso(evaluacion.getIdCurso());
+            eva.setCursoId(evaluacion.getCursoId());
 
             evaluacionservices.guardarEvaluacion(eva);
             return ResponseEntity.ok(evaluacion);

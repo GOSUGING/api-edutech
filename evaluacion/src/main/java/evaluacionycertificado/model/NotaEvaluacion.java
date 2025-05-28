@@ -32,12 +32,14 @@ public class NotaEvaluacion {
     @Column(nullable = true)
     private String descripcion;
 
+    @Column(name= "usuario_id",nullable = false)
+    private Long usuarioId;
+
     @ManyToOne
-    @JoinColumn(name = "id_evaluacion",nullable = false)
+    @JoinColumn(name = "evaluacion_id",nullable = false)
     private Evaluacion evaluacion;
 
-    @Column(name= "id_estudiante",nullable = false)
-    private Long id_estudiante;
+    
 
 
 }

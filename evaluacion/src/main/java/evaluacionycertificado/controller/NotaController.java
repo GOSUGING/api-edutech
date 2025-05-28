@@ -17,20 +17,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 import evaluacionycertificado.model.Evaluacion;
 import evaluacionycertificado.model.NotaEvaluacion;
-import evaluacionycertificado.services.EvaluacionServices;
-import evaluacionycertificado.services.NotaEvaluacionServices;
+import evaluacionycertificado.service.EvaluacionService;
+import evaluacionycertificado.service.NotaEvaluacionService;
 
 @RestController
-@RequestMapping
+@RequestMapping("api/v1/notas")
 
 public class NotaController {
     @Autowired
-    private NotaEvaluacionServices notaservices;
+    private NotaEvaluacionService notaservices;
 
     @Autowired
-    private EvaluacionServices evaluacionservices;
+    private EvaluacionService evaluacionservices;
 
-    @GetMapping("/listanota")
+    @GetMapping("/listarnota")
     public ResponseEntity<List<NotaEvaluacion>> listarnota(){
         List<NotaEvaluacion>notaevaluacion = notaservices.listarNota();
         if (notaevaluacion.isEmpty()) {
@@ -41,7 +41,7 @@ public class NotaController {
     }
 
     
-    @GetMapping("/buscarnota")
+    @GetMapping("/{id}")
     public ResponseEntity<NotaEvaluacion>buscarNotaId(@PathVariable Long id){
         try {
             NotaEvaluacion notaevaluacion = notaservices.buscarNota(id);

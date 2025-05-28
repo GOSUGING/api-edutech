@@ -34,7 +34,7 @@ public class Evaluacion {
     @Column(nullable = false)
     private String ponderacion;
 
-    @Column(name = "curso_id", nullable = false)
-    private Integer idCurso;
+    @Column(nullable = false)
+    private Integer cursoId ;
 
 }

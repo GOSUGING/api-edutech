@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import evaluacionycertificado.model.Certificacion;
 import evaluacionycertificado.model.Evaluacion;
-import evaluacionycertificado.services.CertificacionServices;
-import evaluacionycertificado.services.EvaluacionServices;
+import evaluacionycertificado.service.CertificacionService;
+import evaluacionycertificado.service.EvaluacionService;
 
 
 @RestController
@@ -25,12 +25,12 @@ import evaluacionycertificado.services.EvaluacionServices;
 
 public class CertificacionController {
     @Autowired
-    private CertificacionServices certificadoservices;
+    private CertificacionService certificadoservices;
 
     @Autowired
-    private EvaluacionServices evaluacionservices;
+    private EvaluacionService evaluacionservices;
 
-    @GetMapping("/listarnota")
+    @GetMapping("/listarcertificado")
     public ResponseEntity<List<Certificacion>> listar(){
         List<Certificacion>certificado = certificadoservices.listarCertficacion();
         if (certificado.isEmpty()) {
@@ -64,6 +64,7 @@ public class CertificacionController {
         try {
             Certificacion cert = certificadoservices.buscarCertificadoId(id);
             Evaluacion eva = evaluacionservices.buscarPorIdEva(certificacion.getEvaluacion().getId());
+            
             cert.setId(id);
             cert.setNombre(certificacion.getNombre());
             cert.setEspecializacion(certificacion.getEspecializacion());

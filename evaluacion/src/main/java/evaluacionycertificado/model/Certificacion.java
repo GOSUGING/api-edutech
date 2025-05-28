@@ -48,9 +48,9 @@ public class Certificacion {
     private Integer cursoId;  
 
     @Column(name = "usuario_id", nullable = false)
-    private Integer usuarioId;
+    private Long usuarioId;
 
     @ManyToOne
     @JoinColumn(name = "evaluacion_id", referencedColumnName = "id")
-    private Evaluacion evaluacion;
+    private Evaluacion evaluacion; 
 }
