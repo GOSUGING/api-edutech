@@ -6,11 +6,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.edutech.reportesyadministracion.model.*;
-//import com.edutech.reportesyadministracion.model.EstadoCurso;
+import com.edutech.reportesyadministracion.model.StatusCursoEnum;
 
 
 @Repository
 
 public interface CursoRepository extends JpaRepository<Curso, Integer> {
-    Integer countByEstadoCurso(EstadoCurso estadoCurso);
+    int countByEstadoCursoStatus(StatusCursoEnum status);
 }

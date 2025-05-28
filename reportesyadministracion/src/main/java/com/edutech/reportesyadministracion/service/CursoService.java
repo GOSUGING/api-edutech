@@ -53,9 +53,7 @@ public class CursoService {
     //}
     
     //Contar cursos por estado
-    public Integer contarCursosPorEstado(StatusCursoEnum status, StatusCursoEnum statusCursoEnum) {
-        EstadoCurso estadoCurso = new EstadoCurso();
-        estadoCurso.setStatus(status);
-        return cursoRepository.countByEstadoCurso(estadoCurso);
+    public int contarCursosPorEstado(StatusCursoEnum status) {
+        return cursoRepository.countByEstadoCursoStatus(status);
     }
 }
