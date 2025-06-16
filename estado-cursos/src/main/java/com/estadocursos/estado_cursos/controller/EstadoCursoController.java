@@ -42,7 +42,7 @@ public class EstadoCursoController {
 
     @PutMapping("/{id}")
     public ResponseEntity<EstadoCurso> actualizarEstadoCurso(@PathVariable Integer id, @RequestBody EstadoCurso estadoCurso) {
-        estadoCurso.setId(id);
+        estadoCurso.setId(id != null ? id.longValue() : null);
         EstadoCurso actualizado = estadoCursoService.save(estadoCurso);
         return ResponseEntity.ok(actualizado);
     }

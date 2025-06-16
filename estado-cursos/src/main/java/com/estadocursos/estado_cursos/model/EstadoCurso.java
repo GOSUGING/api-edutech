@@ -25,14 +25,14 @@ public class EstadoCurso {
 
      @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private StatusCursoEnum status;
 
     @Column(name = "curso_id", nullable = false)
-    private Integer   cursoId;
+    private Long   cursoId;
 
 
 }

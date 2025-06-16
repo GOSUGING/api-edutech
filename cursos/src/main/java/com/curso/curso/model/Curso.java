@@ -21,7 +21,7 @@ import jakarta.persistence.*;
 public class Curso {
 
     @Id
-    private Integer id;
+    private Long id;
 
     @Column(nullable = false)
     private String nombreCurso;
@@ -34,6 +34,6 @@ public class Curso {
     private Date duracionCurso;
 
     @Column(name = "estado_curso_id", nullable = false)
-    private String estadoCurso;
+    private Long estadoCurso;
 
 }

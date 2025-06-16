@@ -53,7 +53,7 @@ public class CursoController {
 
     @PutMapping("/{id}")
     public Curso actualizar(@PathVariable Integer id, @RequestBody Curso curso) {
-        curso.setId(id);
+        curso.setId(id.longValue());
         return cursoService.save(curso);
     }
 
