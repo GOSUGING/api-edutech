@@ -1,38 +1,34 @@
 package com.estadocursos.estado_cursos.model;
 
-
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "estado_curso")
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
+@Schema(description = "Entidad que representa el estado actual de un curso")
 public class EstadoCurso {
 
-     @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Schema(description = "ID único del estado del curso", example = "1")
     private Long id;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
+    @Schema(
+        description = "Estado actual del curso (ACTIVO, PENDIENTE, FINALIZADO)",
+        example = "ACTIVO",
+        allowableValues = {"ACTIVO", "PENDIENTE", "FINALIZADO"}
+    )
     private StatusCursoEnum status;
 
     @Column(name = "curso_id", nullable = false)
-    private Long   cursoId;
-
-
+    @Schema(description = "ID del curso asociado", example = "10")
+    private Long cursoId;
 }
