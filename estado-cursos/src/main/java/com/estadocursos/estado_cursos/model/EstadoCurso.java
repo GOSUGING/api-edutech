@@ -31,4 +31,8 @@ public class EstadoCurso {
     @Column(name = "curso_id", nullable = false)
     @Schema(description = "ID del curso asociado", example = "10")
     private Long cursoId;
+
+    @Column(name = "usuario_id", nullable = false)
+    @Schema(description = "Usuario que está gestionando el curso", example = "1")
+    private Long usuarioId;
 }
